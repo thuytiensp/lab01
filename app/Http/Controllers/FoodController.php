@@ -10,4 +10,12 @@ class FoodController extends Controller
     	$foods = \App\Food::all();
      	return view('food.index', ['foods' => $foods]);
     }
+
+    public function getFoodsSection($string)
+    {
+        $section = \App\Section::where('name', $string)->first();
+        $foods = $section->foods;
+        return view('food.index', ['foods' => $foods]);
+    }
+
 }
